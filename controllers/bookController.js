@@ -38,7 +38,16 @@ const createBook=async(req , res)=>{
     res.status.send(200).json(createdBook)
 }
 
+const updateBook=async(req , res)=>{
+    const {title , author}=req.body
+    const id=req.params.id;
+
+
+    const deletedbook=await Book.findOneAndUpdate({id},{title,author});
+    res.status(200).json({deletebook})
+}
+
 
 module.exports={
-    getBook,getBookbyID, createBook, deletebook,
+    getBook,getBookbyID, createBook, deletebook,updateBook
 }
